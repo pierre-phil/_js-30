@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <title>JS-30 | DrumKit</title>
+  </head>
+  <body>
+    <h1>PLAY WITH US</h1>
+
+    <!-- data-key is a custom attribute -->
+    <div class="keys">
+      <div data-key="q" class="key">
+        <kbd>Q</kbd>
+        <span class="sound">play</span>
+      </div>
+      <div data-key="s" class="key">
+        <kbd>S</kbd>
+        <span class="sound">play</span>
+      </div>
+      <div data-key="d" class="key">
+        <kbd>D</kbd>
+        <span class="sound">play</span>
+      </div>
+      <div data-key="f" class="key">
+        <kbd>F</kbd>
+        <span class="sound">play</span>
+      </div>
+      <div data-key="g" class="key">
+        <kbd>G</kbd>
+        <span class="sound">play</span>
+      </div>
+    </div>
+
+    <!-- data-key is a custom attribute -->
+    <audio data-key="q" src="./sounds/1sol.wav"></audio>
+    <audio data-key="s" src="./sounds/1la.wav"></audio>
+    <audio data-key="d" src="./sounds/1si.wav"></audio>
+    <audio data-key="f" src="./sounds/1do.wav"></audio>
+    <audio data-key="g" src="./sounds/1reX.wav"></audio>
+
+    <script src="index.js"></script>
+  </body>
+</html>
