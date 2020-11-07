@@ -1,0 +1,21 @@
+:root {
+  --base: #ffc600;
+  --spacing: 10px;
+  --blur: 10px;
+}
+
+body {
+  margin: 2rem;
+}
+
+img {
+  padding: var(--spacing);
+  background: var(--base);
+  filter: blur(var(--blur));
+  display: block;
+  margin-top: 3rem;
+}
+
+.h1 {
+  color: var(--base);
+}
