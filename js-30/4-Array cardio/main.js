@@ -8,6 +8,106 @@ const inventors = [
   { first: "Max", last: "Planck", year: 1858, passed: 1947 },
 ];
 
+// Array.prototype.filter()
+// 1. Filter the list of inventors for those who were born in the 1500's
+const bornInThe50s = () =>
+  inventors.filter((el) => el.year >= 1500 && el.year <= 1600);
+
+console.table("Were born in the 50s :", bornInThe50s());
+
+// Array.prototype.map()
+// 2. Give us an array of the inventory first and last names
+const inventoryNames = () => inventors.map((el) => el.first + " " + el.last);
+
+console.log("Names :", inventoryNames());
+
+// Array.prototype.sort()
+// 3.Sort the inventors by birthdate, oldest to youngest
+
+const inventorsDOB = () => {
+  const arrayOfYears = [];
+  inventors.forEach((el) => arrayOfYears.push(el.year));
+  arrayOfYears.sort((a, b) => a - b);
+  return arrayOfYears;
+};
+
+const inventorsBorn = inventorsDOB();
+console.log("Dates of birth :", inventorsBorn);
+
+// Array.prototype.reduce()
+// 4. How many years did all the inventors live ?
+
+const inventorsDOD = () => {
+  const arrayOfYears = [];
+  inventors.forEach((el) => arrayOfYears.push(el.passed));
+  arrayOfYears.sort((a, b) => a - b);
+  return arrayOfYears;
+};
+
+const inventorsDeath = inventorsDOD();
+console.log("Dates of death", inventorsDeath);
+
+const totalDOB = inventorsBorn.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+}, 0);
+
+const totalDOD = inventorsDeath.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+}, 0);
+
+const yearsLived = totalDOD - totalDOB;
+console.log(`The inventors lived ${yearsLived} years in total`);
+
+// 5. Sort the inventors by years lived
+const oldest = inventors.sort(function (a, b) {
+  const lastGuy = a.passed - a.year;
+  const nextGuy = b.passed - b.year;
+  return lastGuy > nextGuy ? -1 : 1;
+});
+
+console.table("oldest", oldest);
+
+// 6. Create a list of boulevards in Paris that contains "de" anywhere in the name
+
+const boulevardsInParis = [
+  `Boulevard Auguste-Blanqui`,
+  `Boulevard Barbès`,
+  `Boulevard Beaumarchais`,
+  `Boulevard de l'Amiral-Bruix`,
+  `Boulevard Mortier`,
+  `Boulevard Poniatowski`,
+  `Boulevard Soult`,
+  `Boulevard des Capucines`,
+  `Boulevard de la Chapelle`,
+  `Boulevard de Clichy`,
+  `Boulevard du Crime`,
+  `Boulevard du Général-d'Armée-Jean-Simon`,
+  `Boulevard Haussmann`,
+  `Boulevard de l'Hôpital`,
+  `Boulevard des Italiens`,
+  `Boulevard Lefebvre`,
+  `Boulevard de la Madeleine`,
+  `Boulevard de Magenta`,
+  `Boulevard Marguerite-de-Rochechouart`,
+  `Boulevard Montmartre`,
+  `Boulevard du Montparnasse`,
+  `Boulevard Raspail`,
+  `Boulevard Richard-Lenoir`,
+  `Boulevard Saint-Germain`,
+  `Boulevard Saint-Michel`,
+  `Boulevard de Sébastopol`,
+  `Boulevard de Strasbourg`,
+  `Boulevard du Temple`,
+  `Boulevard Voltaire`,
+  `Boulevard de la Zone`,
+];
+
+const filteredBoulevards = boulevardsInParis.filter((el) => el.includes(`de`));
+
+console.log("filteredBoulevards", filteredBoulevards);
+
+// 7. Sort the people alphabetically by last name
+
 const people = [
   "Beck, Glenn",
   "Becker, Carl",
@@ -52,95 +152,29 @@ const people = [
   "Blake, William",
 ];
 
-// Array.prototype.filter()
-// 1. Filter the list of inventors for those who were born in the 1500's
-const bornInThe50s = () =>
-  inventors.filter((el) => el.year >= 1500 && el.year <= 1600);
+const alpha = people.sort((lastOne, nextOne) => {
+  const [aLast, aFirst] = lastOne.split(", ");
+  const [bLast, bFirst] = nextOne.split(", ");
+  return aLast - bLast;
+});
 
-console.log("Were born in the 50s :", bornInThe50s());
+console.log(alpha);
 
-// Array.prototype.map()
-// 2. Give us an array of the inventory first and last names
-const inventoryNames = () => inventors.map((el) => el.first + " " + el.last);
+// 8. Sum up the instances of each of these
 
-console.log("Names :", inventoryNames());
-
-// Array.prototype.sort()
-// 3.Sort the inventors by birthdate, oldest to youngest
-
-const inventorsDOB = () => {
-  const arrayOfYears = [];
-  inventors.forEach((el) => arrayOfYears.push(el.year));
-  arrayOfYears.sort((a, b) => a - b);
-  return arrayOfYears;
-};
-
-const inventorsBorn = inventorsDOB();
-console.log("Dates of birth :", inventorsBorn);
-
-// Array.prototype.reduce()
-// 4. How many years did all the inventors live ?
-
-const inventorsDOD = () => {
-  const arrayOfYears = [];
-  inventors.forEach((el) => arrayOfYears.push(el.passed));
-  arrayOfYears.sort((a, b) => a - b);
-  return arrayOfYears;
-};
-
-const inventorsDeath = inventorsDOD();
-console.log("Dates of death", inventorsDeath);
-
-const totalDOB = inventorsBorn.reduce((accumulator, currentValue) => {
-  return accumulator + currentValue;
-}, 0);
-
-console.log("totalDOB", totalDOB);
-
-const totalDOD = inventorsDeath.reduce((accumulator, currentValue) => {
-  return accumulator + currentValue;
-}, 0);
-
-console.log("totalDOD", totalDOD);
-
-const yearsLived = totalDOD - totalDOB;
-console.log(`The inventors lived ${yearsLived} years in total`);
-
-// 6. Create a list of boulevards in Paris that contains "de" anywhere in the name
-
-const boulevardsInParis = [
-  `Boulevard Auguste-Blanqui`,
-  `Boulevard Barbès`,
-  `Boulevard Beaumarchais`,
-  `Boulevard de l'Amiral-Bruix`,
-  `Boulevard Mortier`,
-  `Boulevard Poniatowski`,
-  `Boulevard Soult`,
-  `Boulevard des Capucines`,
-  `Boulevard de la Chapelle`,
-  `Boulevard de Clichy`,
-  `Boulevard du Crime`,
-  `Boulevard du Général-d'Armée-Jean-Simon`,
-  `Boulevard Haussmann`,
-  `Boulevard de l'Hôpital`,
-  `Boulevard des Italiens`,
-  `Boulevard Lefebvre`,
-  `Boulevard de la Madeleine`,
-  `Boulevard de Magenta`,
-  `Boulevard Marguerite-de-Rochechouart`,
-  `Boulevard Montmartre`,
-  `Boulevard du Montparnasse`,
-  `Boulevard Raspail`,
-  `Boulevard Richard-Lenoir`,
-  `Boulevard Saint-Germain`,
-  `Boulevard Saint-Michel`,
-  `Boulevard de Sébastopol`,
-  `Boulevard de Strasbourg`,
-  `Boulevard du Temple`,
-  `Boulevard Voltaire`,
-  `Boulevard de la Zone`,
+const data = [
+  "car",
+  "car",
+  "tryck",
+  "truck",
+  "bike",
+  "walk",
+  "car",
+  "van",
+  "bike",
+  "walk",
+  "car",
+  "van",
+  "car",
+  "truck",
 ];
-
-const filteredBoulevards = boulevardsInParis.filter((el) => el.includes(`de`));
-
-console.log("filteredBoulevards", filteredBoulevards);
